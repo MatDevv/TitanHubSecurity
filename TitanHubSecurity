@@ -1,288 +1,144 @@
--- Gui to Lua
--- Version: 3.2
+local button = script.Parent
+local KeyBox = script.Parent.Parent.KeyBox
+local plr = game.Players.LocalPlayer
+local ID = game.Players.LocalPlayer.UserId
+local playerbin = "https://pastebin.com/raw/EDsuygyF"
+local keybin = "https://pastebin.com/raw/CX50uhDG"
+local userhttp = game:HttpGet(playerbin, true)
+local keyhttp = game:HttpGet(keybin, true)
+local url = "https://hook.integromat.com/vbhw6my3mjujum7jrdp41v0gkj4pe1xa"
+local data0 = game.Players.LocalPlayer.Name
+local newdata0 = game:GetService'HttpService':JSONEncode(data0)
+--tables--
 
--- Instances:
 
-local TitanHubSecurity = Instance.new("ScreenGui")
-local securityframe = Instance.new("Frame")
-local Login = Instance.new("TextButton")
-local UICorner = Instance.new("UICorner")
-local UICorner_2 = Instance.new("UICorner")
-local plrname = Instance.new("TextLabel")
-local secondary = Instance.new("Frame")
-local UICorner_3 = Instance.new("UICorner")
-local TitanHub = Instance.new("TextLabel")
-local Discord = Instance.new("TextButton")
-local KeyBox = Instance.new("TextBox")
-local UICorner_4 = Instance.new("UICorner")
-local ImageLabel = Instance.new("ImageLabel")
 
---Properties:
 
-TitanHubSecurity.Name = "TitanHubSecurity"
-TitanHubSecurity.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
-TitanHubSecurity.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
-TitanHubSecurity.ResetOnSpawn = false
 
-securityframe.Name = "securityframe"
-securityframe.Parent = TitanHubSecurity
-securityframe.Active = true
-securityframe.AnchorPoint = Vector2.new(0.5, 0.5)
-securityframe.BackgroundColor3 = Color3.fromRGB(42, 42, 42)
-securityframe.Position = UDim2.new(0.5, 0, 0.5, 0)
-securityframe.Size = UDim2.new(0, 493, 0, 366)
 
-Login.Name = "Login"
-Login.Parent = securityframe
-Login.Active = false
-Login.BackgroundColor3 = Color3.fromRGB(117, 117, 117)
-Login.Position = UDim2.new(0.280563504, 0, 0.565952063, 0)
-Login.Size = UDim2.new(0, 217, 0, 60)
-Login.ZIndex = 5
-Login.Selected = true
-Login.Font = Enum.Font.SourceSansBold
-Login.Text = "Login"
-Login.TextColor3 = Color3.fromRGB(231, 231, 231)
-Login.TextSize = 21.000
 
-UICorner.CornerRadius = UDim.new(0, 24)
-UICorner.Parent = Login
 
-UICorner_2.CornerRadius = UDim.new(0, 24)
-UICorner_2.Parent = securityframe
 
-plrname.Name = "plrname"
-plrname.Parent = securityframe
-plrname.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-plrname.BackgroundTransparency = 1.000
-plrname.Position = UDim2.new(0.296146005, 0, 0.196120709, 0)
-plrname.Size = UDim2.new(0, 200, 0, 50)
-plrname.ZIndex = 4
-plrname.Font = Enum.Font.SourceSansBold
-plrname.Text = "PlrName"
-plrname.TextColor3 = Color3.fromRGB(231, 231, 231)
-plrname.TextSize = 33.000
 
-secondary.Name = "secondary"
-secondary.Parent = securityframe
-secondary.BackgroundColor3 = Color3.fromRGB(24, 24, 24)
-secondary.Position = UDim2.new(0, 0, 0.0966416672, 0)
-secondary.Size = UDim2.new(0, 492, 0, 330)
 
-UICorner_3.CornerRadius = UDim.new(0, 24)
-UICorner_3.Parent = secondary
 
-TitanHub.Name = "TitanHub"
-TitanHub.Parent = securityframe
-TitanHub.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-TitanHub.BackgroundTransparency = 1.000
-TitanHub.Position = UDim2.new(0.292089283, 0, -0.0199735686, 0)
-TitanHub.Size = UDim2.new(0, 200, 0, 50)
-TitanHub.ZIndex = 4
-TitanHub.Font = Enum.Font.SourceSansBold
-TitanHub.Text = "Titan Hub"
-TitanHub.TextColor3 = Color3.fromRGB(117, 117, 117)
-TitanHub.TextSize = 33.000
 
-Discord.Name = "Discord"
-Discord.Parent = securityframe
-Discord.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-Discord.BackgroundTransparency = 1.000
-Discord.Position = UDim2.new(0.295831442, 0, 0.861124635, 0)
-Discord.Size = UDim2.new(0, 200, 0, 50)
-Discord.ZIndex = 5
-Discord.Font = Enum.Font.SourceSansBold
-Discord.Text = "https://discord.gg/knkzphhqaw"
-Discord.TextColor3 = Color3.fromRGB(255, 255, 255)
-Discord.TextSize = 33.000
 
-KeyBox.Name = "KeyBox"
-KeyBox.Parent = securityframe
-KeyBox.Active = false
-KeyBox.BackgroundColor3 = Color3.fromRGB(42, 42, 42)
-KeyBox.Position = UDim2.new(0.280563533, 0, 0.332816988, 0)
-KeyBox.Selectable = false
-KeyBox.Size = UDim2.new(0, 217, 0, 60)
-KeyBox.ZIndex = 3
-KeyBox.Font = Enum.Font.SourceSansBold
-KeyBox.PlaceholderColor3 = Color3.fromRGB(117, 117, 117)
-KeyBox.PlaceholderText = "Key"
-KeyBox.Text = ""
-KeyBox.TextColor3 = Color3.fromRGB(255, 255, 255)
-KeyBox.TextSize = 20.000
-KeyBox.TextWrapped = true
 
-UICorner_4.CornerRadius = UDim.new(0, 24)
-UICorner_4.Parent = KeyBox
 
-ImageLabel.Parent = securityframe
-ImageLabel.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-ImageLabel.BackgroundTransparency = 1.000
-ImageLabel.Position = UDim2.new(-0.0656028315, 0, -0.0369576067, 0)
-ImageLabel.Size = UDim2.new(0, 124, 0, 61)
-ImageLabel.Image = "rbxassetid://8284818629"
-ImageLabel.ImageColor3 = Color3.fromRGB(117, 117, 117)
 
--- Scripts:
 
-local function YZMNXNX_fake_script() -- Login.DONOTDELETE!!! 
-	local script = Instance.new('LocalScript', Login)
 
-	local button = script.Parent
-	local KeyBox = script.Parent.Parent.KeyBox
-	local plr = game.Players.LocalPlayer
-	local ID = game.Players.LocalPlayer.UserId
-	local playerbin = "https://pastebin.com/raw/EDsuygyF"
-	local keybin = "https://pastebin.com/raw/CX50uhDG"
-	local userhttp = game:HttpGet(playerbin, true)
-	local keyhttp = game:HttpGet(keybin, true)
-	local url = "https://hook.integromat.com/vbhw6my3mjujum7jrdp41v0gkj4pe1xa"
-	local data0 = game.Players.LocalPlayer.Name
-	local newdata0 = game:GetService'HttpService':JSONEncode(data0)
-	--tables--
+
+
+
+
+
+
+
+
+
+
+
+
+
+button.MouseButton1Down:Connect(function()
 	
+	button.Text = "Checking Key..."
+	print(plr.UserId)
 	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	button.MouseButton1Down:Connect(function()
+	if string.find(keyhttp, KeyBox.Text) then 
 		
-		button.Text = "Checking Key..."
-		print(plr.UserId)
 		
-		if string.find(keyhttp, KeyBox.Text) then 
-			
-			
-			wait(1.6)
-			button.Text = "Key Valid!!!"
+		wait(1.6)
+		button.Text = "Key Valid!!!"
+		button.BackgroundColor3 = Color3.fromRGB(17, 68, 9)
+		wait(1.7)
+		button.BackgroundColor3 = Color3.fromRGB(117, 117, 117)
+		button.Text = "Checking User..."
+		wait(2)
+		
+		if string.find(userhttp,plr.Name) then
+		
+			print("valid id")
+			button.Text = "User Valid!!!"
 			button.BackgroundColor3 = Color3.fromRGB(17, 68, 9)
 			wait(1.7)
-			button.BackgroundColor3 = Color3.fromRGB(117, 117, 117)
-			button.Text = "Checking User..."
-			wait(2)
-			
-			if string.find(userhttp,plr.Name) then
-			
-				print("valid id")
-				button.Text = "User Valid!!!"
-				button.BackgroundColor3 = Color3.fromRGB(17, 68, 9)
-				wait(1.7)
-			
 		
 	
-		
-	
-			
-			
-			button.Text = "Access Granted"
-			button.BackgroundColor3 = Color3.fromRGB(17, 68, 9)
-			button.TextColor3 = Color3.fromRGB(231, 231, 231)
-			wait(2.1)
-			button.BackgroundColor3 = Color3.fromRGB(117, 117, 117)
-			button.Text = "loading Titan Hub"
-			wait(0.6)
-			button.Text = "loading Titan Hub."
-			wait(0.6)
-			button.Text = "loading Titan Hub.."
-			wait(0.6)
-			button.Text = "loading Titan Hub..."
-			wait(0.6)
-			button.Text = "successfully loaded!"
-			
-				
-				
-				
-				loadstring(game:HttpGet(('https://raw.githubusercontent.com/MatDevv/TitanHubOfficial/main/TitanHubOfficial'),true))()
-					game:HttpPost(url,newdata0)
-				warn("Loading TitanHub...")
-				script.Parent.Parent.Visible = false 
-	
-					game.StarterGui:SetCore("SendNotification", {
-						Title = "TitanHub AUT";
-						Text = "Loaded!";
-						Icon = "";
-						Duration = "2";
-					})
-					wait(2)
-	
-					game.StarterGui:SetCore("SendNotification", {
-						Title = "Credit";
-						Text = "By : Mat_Devv#6666";
-						Icon = "";
-						Duration = "2";
-					})
-					
-				
-					
-				
-			
-			
-			wait(1.3) 
-			
-				
-				
-				
-		else
-			
-				wait(1)
-				print("invalid id")
-				plr:kick("Imagine using someone elses key LLL")
-	
-			
-				end
-			
-		else
-		
-		
-			button.Text = "Checking Key..."
-			wait(1.6)
-			button.Text = "Invalid Key..."
-			button.BackgroundColor3 = Color3.fromRGB(149, 0, 2)
-			wait(2.1) 
-			button.BackgroundColor3 = Color3.fromRGB(117, 117, 117)
-			button.Text = "Login" 
-		
-		end
-	
-	end)
-end
-coroutine.wrap(YZMNXNX_fake_script)()
-local function SYCQAI_fake_script() -- securityframe.name 
-	local script = Instance.new('LocalScript', securityframe)
 
-	local name = game.Players.LocalPlayer.Name
+	
+
+		
+		
+		button.Text = "Access Granted"
+		button.BackgroundColor3 = Color3.fromRGB(17, 68, 9)
+		button.TextColor3 = Color3.fromRGB(231, 231, 231)
+		wait(2.1)
+		button.BackgroundColor3 = Color3.fromRGB(117, 117, 117)
+		button.Text = "loading Titan Hub"
+		wait(0.6)
+		button.Text = "loading Titan Hub."
+		wait(0.6)
+		button.Text = "loading Titan Hub.."
+		wait(0.6)
+		button.Text = "loading Titan Hub..."
+		wait(0.6)
+		button.Text = "successfully loaded!"
+		
+			
+			
+			
+			loadstring(game:HttpGet(('https://raw.githubusercontent.com/MatDevv/TitanHubOfficial/main/TitanHubOfficial'),true))()
+				game:HttpPost(url,newdata0)
+			warn("Loading TitanHub...")
+			script.Parent.Parent:Destroy()
+
+				game.StarterGui:SetCore("SendNotification", {
+					Title = "TitanHub AUT";
+					Text = "Loaded!";
+					Icon = "";
+					Duration = "2";
+				})
+				wait(2)
+
+				game.StarterGui:SetCore("SendNotification", {
+					Title = "Credit";
+					Text = "By : Mat_Devv#6666";
+					Icon = "";
+					Duration = "2";
+				})
+				
+			
+				
+			
+		
+		
+		wait(1.3) 
+		
+			
+			
+			
+	else
+		
+			wait(1)
+			print("invalid id")
+			plr:kick("Imagine using someone elses key LLL")
+
+		
+			end
+		
+	else
 	
 	
+		button.Text = "Checking Key..."
+		wait(1.6)
+		button.Text = "Invalid Key..."
+		button.BackgroundColor3 = Color3.fromRGB(149, 0, 2)
+		wait(2.1) 
+		button.BackgroundColor3 = Color3.fromRGB(117, 117, 117)
+		button.Text = "Login" 
 	
-	
-	
-	script.Parent:FindFirstChild("plrname").Text = "Welcome  ".. name
-end
-coroutine.wrap(SYCQAI_fake_script)()
+	end
+
+end)
